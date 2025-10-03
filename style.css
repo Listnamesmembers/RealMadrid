@@ -373,17 +373,18 @@ header .secondary-logo {
   transform: scale(1.1);
 }
 
+/* START: EDITED SECTION */
 .fixed-btn,
 .fixed-controls {
   position: fixed;
   z-index: 100;
-  /* Glassmorphism for fixed elements */
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 2px solid #000000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all var(--transition-speed) ease;
 }
+/* END: EDITED SECTION */
+
 .fixed-btn {
   color: var(--color-text-primary);
   padding: 10px 20px;
@@ -435,7 +436,7 @@ header .secondary-logo {
   appearance: none;
   width: 80px;
   height: 5px;
-  background: rgba(255, 255, 255, 0.1);
+  background: #555555;
   outline: none;
   border-radius: 3px;
 }
@@ -458,12 +459,12 @@ header .secondary-logo {
   margin-top: 30px;
   gap: 20px;
 }
+
+/* START: EDITED SECTION */
 .pagination-controls button {
-  /* Dark buttons with glassmorphism */
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  background: #ffffff;
   color: var(--color-text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid #000000; /* << แก้ไขค่า 1px ตรงนี้ */
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
@@ -471,6 +472,8 @@ header .secondary-logo {
   font-size: 1rem;
   transition: all 0.3s;
 }
+/* END: EDITED SECTION */
+
 .pagination-controls button:hover:not(:disabled) {
   background: var(--color-leader);
   color: #000;
