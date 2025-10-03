@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealMadrid - Creative Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <canvas id="canvas-bg"></canvas>
+
+    <div id="landing-page">
+        <div class="landing-container">
+            <img src="https://img2.pic.in.th/pic/fed18387-8980-4310-8902-37ea67c5fedc-Photoroom.png" alt="RealMadrid Logo" class="logo">
+            
+            <h1 class="landing-title">REAL MADRID</h1>
+            
+            <div class="landing-buttons">
+                <button id="enter-btn" class="enter-button member-btn">
+                    <i class="fas fa-users"></i> Member List
+                </button>
+            </div>
+        </div>
+        <footer>
+            <p>Designed by Lord Oreo © 2025</p>
+        </footer>
+    </div>
+    
+    <div id="members-page" class="main-layout">
+        <div class="main-wrapper">
+            <header>
+                <div class="header-logos">
+                    <img src="https://img2.pic.in.th/pic/fed18387-8980-4310-8902-37ea67c5fedc-Photoroom.png" alt="RealMadrid Logo" class="logo">
+                    <img src="https://img2.pic.in.th/pic/24fc310f-41af-49b8-b284-6793f8fd1ca9-Photoroom.png" alt="RealMadrid Emblem" class="logo secondary-logo">
+                </div>
+            </header>
+
+            <main>
+                <div class="search-container scroll-reveal">
+                    <input type="text" id="searchInput" placeholder="Search member name...">
+                </div>
+
+                <section class="member-section scroll-reveal" id="theboss-section">
+                    <div class="role-badge leader-badge">Theboss</div>
+                    <h2 class="section-title">THEBOSS REALMADRID</h2>
+                    <div class="member-grid" id="theboss-grid"></div>
+                </section>
+                
+                <section class="member-section scroll-reveal" id="kings-section">
+                    <div class="role-badge kings-badge">KINGS</div>
+                    <h2 class="section-title">KINGS REALMADRID</h2>
+                    <div class="member-grid" id="kings-grid"></div>
+                </section>
+
+                <!-- <section class="member-section scroll-reveal" id="member-section">
+                    <div class="role-badge member-badge">MEMBERS</div>
+                    <h2 class="section-title">MEMBERS REALMADRID</h2>
+                    <div class="member-grid" id="member-grid"></div>
+                </section> -->
+
+                <div class="pagination-controls scroll-reveal">
+                    <button id="prevBtn">ก่อนหน้า</button>
+                    <span id="pageInfo"></span>
+                    <button id="nextBtn">ถัดไป</button>
+                </div>
+            </main>
+        </div>
+        
+        <button id="back-to-landing-btn" class="fixed-btn">
+            <i class="fas fa-home"></i> Home
+        </button>
+
+        <div id="audio-player-container" class="fixed-controls">
+            <audio id="gang-music" src="https://files.catbox.moe/cg1yd9.mp3" preload="auto" loop></audio>
+            <button id="play-pause-btn" class="audio-btn"><i class="fas fa-play"></i></button>
+            <div class="volume-control">
+                <button id="mute-btn" class="audio-btn"><i class="fas fa-volume-high"></i></button>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.1">
+            </div>
+        </div>
+        <footer>
+            <p>Designed by Lord Oreo © 2025</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

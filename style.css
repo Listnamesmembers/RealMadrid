@@ -1,0 +1,530 @@
+:root {
+    --color-background: #f5f5f5; /* Light grey */
+    --color-surface: #ffffff;
+    --color-card: #ffffff;
+    --color-text-primary: #1a1a1a; /* Dark grey */
+    --color-text-secondary: #555555;
+    --color-border: #eaeaea;
+
+    --color-leader: #1a1a1a; /* White for leaders */
+    --color-leader-glow: rgba(255, 255, 255, 0.3);
+    --color-king: #1a1a1a; /* Silver for kings */
+    --color-king-glow: rgba(192, 192, 192, 0.3);
+    --color-member: #1a1a1a; /* Grey for members */
+    --color-member-glow: rgba(128, 128, 128, 0.3);
+
+  --font-family: "Kanit", sans-serif;
+  --transition-speed: 0.4s;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    overflow-x: hidden;
+    position: relative;
+    color: var(--color-text-primary);
+
+    /* --- New Image Background --- */
+    background-image: url('https://img2.pic.in.th/pic/ALL-UI-21e1dc318c69937a1.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+#canvas-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.25;
+}
+
+#landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  position: relative;
+}
+
+/* Added glassmorphism effect to landing container */
+.landing-container {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 60px 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.landing-container .logo {
+  max-width: 300px;
+  /* Added glow effect to logo */
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  transition: filter 0.3s ease;
+}
+
+.landing-container .logo:hover {
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+}
+
+.landing-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin: 0 0 30px 0;
+  /* Added text shadow for depth */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.landing-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.enter-button,
+.youtube-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.enter-button {
+  /* White button with dark text for contrast */
+  background-color: var(--color-leader);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Added shine effect on hover */
+.enter-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.enter-button:hover::before {
+  left: 100%;
+}
+
+.enter-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px var(--color-leader-glow), 0 0 40px rgba(255, 255, 255, 0.2);
+  filter: brightness(1.1);
+}
+
+#members-page {
+  display: none;
+  padding: 20px;
+}
+.main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-top: 20px;
+}
+header .logo {
+  max-width: 250px;
+  /* Added glow to header logos */
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+header .header-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+header .secondary-logo {
+  max-width: 250px;
+  height: auto;
+  margin-bottom: 0;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+
+.search-container {
+  margin-bottom: 40px;
+  text-align: center;
+}
+#searchInput {
+  width: 100%;
+  max-width: 500px;
+  padding: 15px 20px;
+  /* Dark input with glassmorphism */
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  transition: all var(--transition-speed) ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+#searchInput::placeholder {
+  color: var(--color-text-secondary);
+}
+#searchInput:focus {
+  outline: none;
+  border-color: var(--color-leader);
+  box-shadow: 0 0 20px var(--color-leader-glow), 0 4px 15px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  /* Added border and shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.leader-badge { background-color: var(--color-leader); color: #fff; }
+.kings-badge { background-color: var(--color-king); color: #fff; }
+
+.member-badge {
+  background-color: var(--color-member);
+  color: #fff;
+  box-shadow: 0 0 20px var(--color-member-glow);
+}
+
+.member-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 auto 20px auto;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--color-border);
+  max-width: 400px;
+  /* Added text glow */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.member-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* ปรับค่าความโปร่งใสให้ทึบขึ้นจาก 0.05 เป็น 0.15 */
+  background: linear-gradient(135deg, rgba(255, 255, 255, 100) 0%, rgba(255, 255, 255, 100) 100%);
+  padding: 10px 15px;
+  border-radius: 15px;
+  /* ปรับค่าความโปร่งใสของเส้นขอบให้ทึบขึ้นจาก 0.1 เป็น 0.2 */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.member-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+}
+.member-card.theboss-card {
+  border-color: var(--color-leader);
+  border-width: 2px;
+}
+.member-card.king-card {
+  border-color: var(--color-king);
+  border-width: 2px;
+}
+.member-card.member-card {
+  border-color: var(--color-member);
+}
+
+.member-card:hover.theboss-card {
+  box-shadow: 0 0 30px var(--color-leader-glow), 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+.member-card:hover.king-card {
+  box-shadow: 0 0 30px var(--color-king-glow), 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+.member-card:hover.member-card {
+  box-shadow: 0 0 30px var(--color-member-glow), 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.member-card .profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 3px solid #fff;
+  /* Added shadow to profile pictures */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+.theboss-card .profile-pic {
+  border-color: var(--color-leader);
+  box-shadow: 0 0 15px var(--color-leader-glow);
+}
+.king-card .profile-pic {
+  border-color: var(--color-king);
+  box-shadow: 0 0 15px var(--color-king-glow);
+}
+.member-card .profile-pic {
+  border-color: var(--color-member);
+  box-shadow: 0 0 15px var(--color-member-glow);
+}
+
+.member-card .member-info {
+  flex-grow: 1;
+  text-align: left;
+}
+.member-card .member-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: var(--color-text-primary);
+}
+
+.theboss-card .member-info h3 {
+  color: var(--color-leader);
+  text-shadow: 0 0 10px var(--color-leader-glow);
+}
+
+.king-card .member-info h3 {
+  color: var(--color-king);
+  text-shadow: 0 0 10px var(--color-king-glow);
+}
+
+.member-card .member-info a {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+  word-break: break-all;
+}
+.member-card .member-info a:hover {
+  color: var(--color-leader);
+}
+
+.profile-link {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  transition: all 0.3s ease;
+  padding: 8px 15px;
+  margin-left: 10px;
+  border-radius: 8px;
+  /* Dark background for icon button */
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.profile-link:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.fixed-btn,
+.fixed-controls {
+  position: fixed;
+  z-index: 100;
+  /* Glassmorphism for fixed elements */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-speed) ease;
+}
+.fixed-btn {
+  color: var(--color-text-primary);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+#back-to-landing-btn {
+  top: 20px;
+  left: 20px;
+}
+#audio-player-container {
+  bottom: 20px;
+  left: 20px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+.fixed-btn:hover,
+.fixed-controls:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+.audio-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.audio-btn:hover {
+  color: var(--color-leader);
+}
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  border-radius: 3px;
+}
+#volume-slider::-webkit-slider-thumb,
+#volume-slider::-moz-range-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: var(--color-leader);
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid var(--color-card);
+  box-shadow: 0 0 10px var(--color-leader-glow);
+}
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+.pagination-controls button {
+  /* Dark buttons with glassmorphism */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+.pagination-controls button:hover:not(:disabled) {
+  background: var(--color-leader);
+  color: #000;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--color-leader-glow);
+}
+.pagination-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+#pageInfo {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+#theboss-grid,
+#kings-grid,
+#member-grid {
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 350px);
+}
+
+#theboss-section .section-title {
+  border-bottom-color: var(--color-leader);
+}
+
+#kings-section .section-title {
+  border-bottom-color: var(--color-king);
+}
+
+/* Added responsive design improvements */
+@media (max-width: 768px) {
+  .landing-container {
+    padding: 40px 30px;
+  }
+
+  .landing-title {
+    font-size: 2rem;
+  }
+
+  .member-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #theboss-grid,
+  #kings-grid,
+  #member-grid {
+    grid-template-columns: 1fr;
+  }
+}
